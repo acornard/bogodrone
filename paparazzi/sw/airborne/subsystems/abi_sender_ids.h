@@ -303,6 +303,11 @@
 #define IMU_VECTORNAV_ID 18
 #endif
 
+#ifndef IMU_ALTIMU10_ID
+#define IMU_ALTIMU10_ID 19
+#endif
+
+
 /*
  * IDs of OPTICFLOW estimates (message 11)
  */
