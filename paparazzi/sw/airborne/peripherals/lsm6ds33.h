@@ -75,8 +75,8 @@
 
 #endif
 
-#ifndef GYRO_ACCEL_H
-#define GYRO_ACCEL_H
+#ifndef ACCEL_SENS_H
+#define ACCEL_SENS_H
 
 #define LSM6_ACCEL_SENS_2G 0.613125
 #define LSM6_ACCEL_SENS_2G_NUM 981
@@ -118,8 +118,7 @@ struct Lsm6Config {
 
 static inline void lsm6_set_default_config(struct Lsm6Config *c)
 {
-  c->xl  = LSM6_XL_DEFAULT_ODR | LSM6_XL_DEFAULT_FS
-  ;
+  c->xl  = LSM6_XL_DEFAULT_ODR | LSM6_XL_DEFAULT_FS;
   c->g   = LSM6_G_DEFAULT_ODR | LSM6_G_DEFAULT_FS;
   c->c   = LSM6_C_DEFAULT;
   c->orient = LSM6_ORIENT;

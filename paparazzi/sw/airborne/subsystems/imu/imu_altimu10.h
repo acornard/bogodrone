@@ -33,8 +33,10 @@
 
 #include "generated/airframe.h"
 
-//#include "peripherals/lsm6ds33.h"
 #include "peripherals/lsm6ds33_i2c.h"
+#include "peripherals/lis3mdl_i2c.h"
+#include "peripherals/lps25h_i2c.h"
+
 #include "subsystems/imu.h"
 
 
@@ -46,12 +48,18 @@
 #define IMU_ALTIMU10_ACCEL_RANGE LSM6_XL_DEFAULT_FS
 #endif
 
+#ifndef IMU_ALTIMU10_MAG_RANGE
+#define IMU_ALTIMU10_MAG_RANGE LIS3MDL_DEFAULT_FS
+#endif
+
 extern const float LSM6_GYRO_SENS[4];
 extern const int32_t LSM6_GYRO_SENS_FRAC[4][2];
 
 extern const float LSM6_ACCEL_SENS[4];
 extern const int32_t LSM6_ACCEL_SENS_FRAC[4][2];
 
+extern const float LIS3MDL_MAG_SENS[4];
+extern const int32_t LIS3MDL_MAG_SENS_FRAC[4][2];
 
 
 // Set default sensitivity based on range if needed
@@ -67,7 +75,6 @@ extern const int32_t LSM6_ACCEL_SENS_FRAC[4][2];
 #define IMU_GYRO_R_SENS_DEN LSM6_GYRO_SENS_FRAC[IMU_ALTIMU10_GYRO_RANGE][1]
 #endif
 
-// Set default sensitivity based on range if needed
 #if !defined IMU_ACCEL_X_SENS & !defined IMU_ACCEL_Y_SENS & !defined IMU_ACCEL_Z_SENS
 #define IMU_ACCEL_X_SENS LSM6_ACCEL_SENS[IMU_ALTIMU10_ACCEL_RANGE]
 #define IMU_ACCEL_X_SENS_NUM LSM6_ACCEL_SENS_FRAC[IMU_ALTIMU10_ACCEL_RANGE][0]
@@ -80,10 +87,22 @@ extern const int32_t LSM6_ACCEL_SENS_FRAC[4][2];
 #define IMU_ACCEL_Z_SENS_DEN LSM6_ACCEL_SENS_FRAC[IMU_ALTIMU10_ACCEL_RANGE][1]
 #endif
 
+#if !defined IMU_MAG_X_SENS & !defined IMU_MAG_Y_SENS & !defined IMU_MAG_Z_SENS
+#define IMU_MAG_X_SENS LIS3MDL_MAG_SENS[IMU_ALTIMU10_MAG_RANGE]
+#define IMU_MAG_X_SENS_NUM LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][0]
+#define IMU_MAG_X_SENS_DEN LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][1]
+#define IMU_MAG_Y_SENS LIS3MDL_MAG_SENS[IMU_ALTIMU10_MAG_RANGE]
+#define IMU_MAG_Y_SENS_NUM LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][0]
+#define IMU_MAG_Y_SENS_DEN LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][1]
+#define IMU_MAG_Z_SENS LIS3MDL_MAG_SENS[IMU_ALTIMU10_MAG_RANGE]
+#define IMU_MAG_Z_SENS_NUM LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][0]
+#define IMU_MAG_Z_SENS_DEN LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][1]
+#endif
 
 struct ImuAltimu10 {
   struct Lsm6_I2c acc_g_lsm6;
-  // TODO: Add struct for LIS3 and LPS25H
+  struct Lis3mdl_I2c mag_lis3mdl;
+  struct Lps25h_I2c baro_lps25h;
 };
 
 extern struct ImuAltimu10 imu_altimu10;

@@ -17,8 +17,6 @@
       <define name="MAG_X_SENS" value="3.4936416" integer="16"/>
       <define name="MAG_Y_SENS" value="3.607713" integer="16"/>
       <define name="MAG_Z_SENS" value="4.90788848" integer="16"/>
-			
-    	<define name="IMU_ALTIMU10_I2C_ADDR" value="LSM6_ADDR" description="I2C address of the MPU"/>
     </section>
   </doc>
   <autoload name="imu_common"/>
@@ -36,7 +34,9 @@
 
     <define name="IMU_TYPE_H" value="subsystems/imu/imu_altimu10.h" type="string"/>
 
+    <file name="lis3mdl_i2c.c" dir="peripherals"/>
     <file name="lsm6ds33_i2c.c" dir="peripherals"/>
+    <file name="lps25h_i2c.c" dir="peripherals"/>
     <file name="imu_altimu10.c" dir="subsystems/imu"/>
   </makefile>
 </module>
