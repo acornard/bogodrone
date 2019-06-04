@@ -96,12 +96,12 @@
 		<define name="MAG_Y_SENS" value="0.620422703124" integer="16"/>
 		<define name="MAG_Z_SENS" value="0.629618063993" integer="16"/>
 
-		<define name="ACCEL_X_NEUTRAL" value="20"/>
-		<define name="ACCEL_Y_NEUTRAL" value="41"/>
-		<define name="ACCEL_Z_NEUTRAL" value="-2"/>
-		<define name="ACCEL_X_SENS" value="4.90507857871" integer="16"/>
-		<define name="ACCEL_Y_SENS" value="4.93337758982" integer="16"/>
-		<define name="ACCEL_Z_SENS" value="4.92194427178" integer="16"/>
+		<define name="ACCEL_X_NEUTRAL" value="23"/>
+		<define name="ACCEL_Y_NEUTRAL" value="38"/>
+		<define name="ACCEL_Z_NEUTRAL" value="-4"/>
+		<define name="ACCEL_X_SENS" value="4.90464869672" integer="16"/>
+		<define name="ACCEL_Y_SENS" value="4.93896734967" integer="16"/>
+		<define name="ACCEL_Z_SENS" value="4.92524013784" integer="16"/>
 
 	</section>
 	<section name="AHRS" prefix="AHRS_">
