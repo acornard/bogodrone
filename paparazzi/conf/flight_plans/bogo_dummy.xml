@@ -21,7 +21,6 @@
 			<!--<call_once fun="NavSetAltitudeReferenceHere()"/>-->
 		</block>
 		<block name="Holding point">
-			<call_once fun="NavKillThrottle()"/>
 			<attitude pitch="0" roll="0" throttle="0" vmode="throttle" until="FALSE"/>
 		</block>
 		<block name="Start Engine">
@@ -29,10 +28,8 @@
 			<attitude pitch="0" roll="0" throttle="0" vmode="throttle" until="FALSE"/>
 		</block>
 		<block name="Takeoff" strip_button="Takeoff" strip_icon="takeoff.png">
-			<!--<exception cond="GetPosAlt() > GetAltRef()+0.1" deroute="Land here"/>-->
 			<call_once fun="NavSetWaypointHere(WP_CLIMB)"/>
-			<stay vmode="throttle" throttle="0.9" wp="CLIMB"/>
-			<!--<stay wp="CLIMB" until="MoreThan(NavBlockTime(), 60)"/>-->
+			<stay wp="HOME" alt="5"/>
 		</block>
 		<!--<block name="Standby" strip_button="Standby" strip_icon="home.png">
 			<call_once fun="NavSetWaypointHere(WP_STDBY)"/>

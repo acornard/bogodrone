@@ -28,20 +28,20 @@
 #define LSM6_H
 
 #ifndef LSM6_XL_DEFAULT_ODR
-#define LSM6_XL_DEFAULT_ODR (LSM6_ODR_XL_1_6KHZ << 4)
+#define LSM6_XL_DEFAULT_ODR (LSM6_ODR_XL_104HZ << 4)
 #endif
 
 #ifndef LSM6_XL_DEFAULT_FS
-#define LSM6_XL_DEFAULT_FS  (LSM6_FS_XL_2G << 2)
+#define LSM6_XL_DEFAULT_FS  (LSM6_FS_XL_16G << 2)
 #endif
 
 
 #ifndef LSM6_G_DEFAULT_ODR
-#define LSM6_G_DEFAULT_ODR  (LSM6_ODR_G_1_6KHZ << 4)
+#define LSM6_G_DEFAULT_ODR  (LSM6_ODR_G_104HZ << 4)
 #endif
 
 #ifndef LSM6_G_DEFAULT_FS
-#define LSM6_G_DEFAULT_FS   (LSM6_FS_G_245 << 2)
+#define LSM6_G_DEFAULT_FS   (LSM6_FS_G_1000 << 2)
 #endif
 
 #ifndef LSM6_C_DEFAULT

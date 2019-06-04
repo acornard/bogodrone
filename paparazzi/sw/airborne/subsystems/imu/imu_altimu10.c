@@ -108,13 +108,14 @@ void imu_altimu10_event(void)
 
   lsm6_i2c_event(&imu_altimu10.acc_g_lsm6);
   if (imu_altimu10.acc_g_lsm6.data_available) {
-    imu.accel_unscaled.x = -imu_altimu10.acc_g_lsm6.data_xl.vect.x;
-    imu.accel_unscaled.y =  imu_altimu10.acc_g_lsm6.data_xl.vect.y;
-    imu.accel_unscaled.z = -imu_altimu10.acc_g_lsm6.data_xl.vect.z;
 
-    imu.gyro_unscaled.p = -imu_altimu10.acc_g_lsm6.data_g.rates.p;
-    imu.gyro_unscaled.q =  imu_altimu10.acc_g_lsm6.data_g.rates.q;
-    imu.gyro_unscaled.r = -imu_altimu10.acc_g_lsm6.data_g.rates.r;
+    imu.accel_unscaled.x = imu_altimu10.acc_g_lsm6.data_xl.vect.y;
+    imu.accel_unscaled.y = imu_altimu10.acc_g_lsm6.data_xl.vect.x;
+    imu.accel_unscaled.z = imu_altimu10.acc_g_lsm6.data_xl.vect.z;
+
+    imu.gyro_unscaled.p = imu_altimu10.acc_g_lsm6.data_g.rates.p;
+    imu.gyro_unscaled.q = imu_altimu10.acc_g_lsm6.data_g.rates.q;
+    imu.gyro_unscaled.r = imu_altimu10.acc_g_lsm6.data_g.rates.r;
 
     imu_altimu10.acc_g_lsm6.data_available = false;
     imu_scale_accel(&imu);
