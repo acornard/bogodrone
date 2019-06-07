@@ -142,7 +142,7 @@ enum Lsm6AccelRanges {
 };
 
 /**
- * Selectable gyro ODR
+ * Selectable accel ODR
  */
 enum Lsm6AccelODR {
   LSM6_ODR_XL_PWR_DWN  = 0x00,

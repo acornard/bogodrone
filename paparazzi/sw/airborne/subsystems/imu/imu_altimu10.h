@@ -37,7 +37,6 @@
 #include "peripherals/lis3mdl_i2c.h"
 #include "peripherals/lps25h_i2c.h"
 
-#include "subsystems/imu.h"
 
 
 #ifndef IMU_ALTIMU10_GYRO_RANGE
@@ -98,6 +97,8 @@ extern const int32_t LIS3MDL_MAG_SENS_FRAC[4][2];
 #define IMU_MAG_Z_SENS_NUM LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][0]
 #define IMU_MAG_Z_SENS_DEN LIS3MDL_MAG_SENS_FRAC[IMU_ALTIMU10_MAG_RANGE][1]
 #endif
+
+#include "subsystems/imu.h"
 
 struct ImuAltimu10 {
   struct Lsm6_I2c acc_g_lsm6;

@@ -117,6 +117,14 @@ void imu_altimu10_event(void)
     imu.gyro_unscaled.q = imu_altimu10.acc_g_lsm6.data_g.rates.q;
     imu.gyro_unscaled.r = imu_altimu10.acc_g_lsm6.data_g.rates.r;
 
+    //imu.gyro_unscaled.p = 0;
+    //imu.gyro_unscaled.q = 0;
+    //imu.gyro_unscaled.r = 0;
+
+    //imu.accel_unscaled.x = 0;
+    //imu.accel_unscaled.y = 0;
+    //imu.accel_unscaled.z = 0;
+
     imu_altimu10.acc_g_lsm6.data_available = false;
     imu_scale_accel(&imu);
     imu_scale_gyro(&imu);

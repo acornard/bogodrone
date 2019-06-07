@@ -125,7 +125,7 @@ void lsm6_i2c_event(struct Lsm6_I2c *lsm)
       lsm->data_g.rates.p = Int16FromBuf(lsm->i2c_trans.buf, 0);
       lsm->data_g.rates.q = Int16FromBuf(lsm->i2c_trans.buf, 2);
       lsm->data_g.rates.r = Int16FromBuf(lsm->i2c_trans.buf, 4);
-    
+
       //fprintf(stderr, "p=%5d\tq=%5d\tr=%5d\n", lsm->data_g.rates.p,
       //        lsm->data_g.rates.q, lsm->data_g.rates.r);
       //fprintf(stderr, "x=%5d\ty=%5d\tz=%5d\n", lsm->data_xl.vect.x,
