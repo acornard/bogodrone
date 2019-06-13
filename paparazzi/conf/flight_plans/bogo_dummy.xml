@@ -28,15 +28,17 @@
 			<call_once fun="NavResurrect()"/>
 			<attitude pitch="0" roll="0" throttle="0" vmode="throttle" until="FALSE"/>
 		</block>
-		<block name="Takeoff" strip_button="Takeoff" strip_icon="takeoff.png">
-			<!--<exception cond="GetPosAlt() > GetAltRef()+0.1" deroute="Land here"/>-->
+		<block key="t" name="Takeoff" strip_button="Takeoff" strip_icon="takeoff.png">
+			<!--<exception cond="GetPosAlt() > 262" deroute="Standby"/>-->
 			<call_once fun="NavSetWaypointHere(WP_CLIMB)"/>
-			<stay vmode="throttle" throttle="0.9" wp="CLIMB"/>
+			<stay vmode="throttle" throttle="0.9" wp="CLIMB" until="GetPosAlt() > 261"/>
+			<!--<go wp="CLIMB" alt="2"/>-->
 			<!--<stay wp="CLIMB" until="MoreThan(NavBlockTime(), 60)"/>-->
 		</block>
-		<block name="Standby" strip_button="Standby" strip_icon="home.png">
+		<block key="s" name="Standby" strip_button="Standby" strip_icon="home.png">
 			<call_once fun="NavSetWaypointHere(WP_STDBY)"/>
-			<stay wp="STDBY" alt="GetPosAlt()"/>
+			<!--<stay wp="STDBY" alt="GetPosAlt()"/>-->
+			<attitude roll="0" vmode="throttle" throttle="0.78"/>
 		</block>
 		<block name="Land here" strip_button="Land Here" strip_icon="land-right.png">
 			<call_once fun="NavSetWaypointHere(WP_LAND)"/>
