@@ -20,11 +20,11 @@
  */
 /**
  * @file peripherals/lsm6ds33_regs.h
- * Register defs for ST LSM6DS33 3D accelerometer and magnetometer.
+ * Register defs for ST LSM6DS33 3D accelerometer and gyroscope.
  *
- * Has an I2C and SPI interface.
+ * Has an I2C interface.
  * The LSM6DS33 has linear acceleration full scales of ±2g / ±4g / ±8g / ±16g
- * and an angular rate range of ±125 / ±245 / ±500 / ±1000 / ±2000 dps.
+ * and an angular rate range of  ±245 / ±500 / ±1000 / ±2000 dps.
  */
 
 #ifndef LSM6_REGS_H
@@ -166,7 +166,7 @@ enum Lsm6AccelBw {
   LSM6_BW_XL_200HZ = 0x01,
   LSM6_BW_XL_100HZ = 0x02,
   LSM6_BW_XL_50HZ  = 0x03
- };
+};
 
 
 /** LSM6 device identifier in LSM6_REG_WHO_AM_I */

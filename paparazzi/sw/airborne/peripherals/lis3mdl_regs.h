@@ -19,7 +19,7 @@
  * Boston, MA 02111-1307, USA.
  */
 /**
- * @file peripherals/lis3Mdl_regs.h
+ * @file peripherals/lis3mdl_regs.h
  * Register defs for ST LIS3MDL 3D magnetometer.
  *
  * Has an I2C interface.

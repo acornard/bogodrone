@@ -34,7 +34,6 @@ void lsm6_i2c_init(struct Lsm6_I2c *lsm, struct i2c_periph *i2c_p, uint8_t addr)
 {
   /* set i2c_peripheral */
   lsm->i2c_p = i2c_p;
-
   /* set i2c address */
   lsm->i2c_trans.slave_addr = addr;
   lsm->i2c_trans.status = I2CTransDone;
@@ -58,7 +57,7 @@ static void lsm6_i2c_tx_reg(struct Lsm6_I2c *lsm, uint8_t reg, uint8_t val)
 
 // Configuration function called once before normal use
 static void lsm6_i2c_send_config(struct Lsm6_I2c *lsm)
-{ 
+{
   switch (lsm->init_status) {
     case LSM6_CONF_CTRL1_XL:
       lsm6_i2c_tx_reg(lsm, LSM6_REG_CTRL1_XL, lsm->config.xl);
@@ -85,7 +84,7 @@ static void lsm6_i2c_send_config(struct Lsm6_I2c *lsm)
   }
 }
 
-/// Start configuration if not already done
+// Start configuration if not already done
 void lsm6_i2c_start_configure(struct Lsm6_I2c *lsm)
 {
   if (lsm->init_status == LSM6_CONF_UNINIT) {
@@ -125,11 +124,6 @@ void lsm6_i2c_event(struct Lsm6_I2c *lsm)
       lsm->data_g.rates.p = Int16FromBuf(lsm->i2c_trans.buf, 0);
       lsm->data_g.rates.q = Int16FromBuf(lsm->i2c_trans.buf, 2);
       lsm->data_g.rates.r = Int16FromBuf(lsm->i2c_trans.buf, 4);
-
-      //fprintf(stderr, "p=%5d\tq=%5d\tr=%5d\n", lsm->data_g.rates.p,
-      //        lsm->data_g.rates.q, lsm->data_g.rates.r);
-      //fprintf(stderr, "x=%5d\ty=%5d\tz=%5d\n", lsm->data_xl.vect.x,
-      //        lsm->data_xl.vect.y, lsm->data_xl.vect.z);
       lsm->data_available = true;
       lsm->i2c_trans.status = I2CTransDone;
     }

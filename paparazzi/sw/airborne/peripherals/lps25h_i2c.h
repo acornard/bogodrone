@@ -39,8 +39,8 @@ struct Lps25h_I2c {
   struct i2c_periph *i2c_p;
   struct i2c_transaction i2c_trans;
   enum Lps25hConfStatus init_status; ///< init status
-  bool initialized;                 ///< config done flag
-  volatile bool data_available;     ///< data ready flag
+  bool initialized;                  ///< config done flag
+  volatile bool data_available;      ///< data ready flag
   int32_t data;
   struct Lps25hConfig config;
 };
@@ -53,8 +53,7 @@ extern void lps25h_i2c_event(struct Lps25h_I2c *lps);
 extern float lps25h_readPressureMillibars(int32_t press);
 extern float pressureToAltMeters(float pressure_mbar, float altimeter_setting_mbar);
 
-
-/// convenience function: read or start configuration if not already initialized
+// convenience function: read or start configuration if not already initialized
 static inline void lps25h_i2c_periodic(struct Lps25h_I2c *lps)
 {
   if (lps->initialized) {

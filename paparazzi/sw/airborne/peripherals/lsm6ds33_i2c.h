@@ -38,16 +38,16 @@
 struct Lsm6_I2c {
   struct i2c_periph *i2c_p;
   struct i2c_transaction i2c_trans;
-  enum Lsm6ConfStatus init_status; ///< init status
+  enum Lsm6ConfStatus init_status;  ///< init status
   bool initialized;                 ///< config done flag
   volatile bool data_available;     ///< data ready flag
   union {
-    struct Int16Vect3 vect;           ///< data vector in accel coordinate system
-    int16_t value[3];                 ///< data values accessible by channel index
+    struct Int16Vect3 vect;         ///< data vector in accel coordinate system
+    int16_t value[3];               ///< data values accessible by channel index
   } data_xl;
   union {
-    struct Int16Rates rates;           ///< data as angular rates in gyroscop coordinate system
-    int16_t value[3];                 ///< data values accessible by channel index
+    struct Int16Rates rates;        ///< data as angular rates in gyroscop coordinate system
+    int16_t value[3];               ///< data values accessible by channel index
   } data_g;
   struct Lsm6Config config;
 };

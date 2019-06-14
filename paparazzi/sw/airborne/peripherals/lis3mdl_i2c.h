@@ -39,10 +39,10 @@ struct Lis3mdl_I2c {
   struct i2c_periph *i2c_p;
   struct i2c_transaction i2c_trans;
   enum Lis3mdlConfStatus init_status; ///< init status
-  bool initialized;                 ///< config done flag
-  volatile bool data_available;     ///< data ready flag
+  bool initialized;                   ///< config done flag
+  volatile bool data_available;       ///< data ready flag
   union {
-    struct Int16Vect3 vect;           ///< data vector in accel coordinate system
+    struct Int16Vect3 vect;           ///< data vector
     int16_t value[3];                 ///< data values accessible by channel index
   } data;
   struct Lis3mdlConfig config;
@@ -54,7 +54,7 @@ extern void lis3mdl_i2c_start_configure(struct Lis3mdl_I2c *lis);
 extern void lis3mdl_i2c_read(struct Lis3mdl_I2c *lis);
 extern void lis3mdl_i2c_event(struct Lis3mdl_I2c *lis);
 
-/// convenience function: read or start configuration if not already initialized
+// convenience function: read or start configuration if not already initialized
 static inline void lis3mdl_i2c_periodic(struct Lis3mdl_I2c *lis)
 {
   if (lis->initialized) {

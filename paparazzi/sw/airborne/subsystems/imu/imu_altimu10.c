@@ -22,13 +22,13 @@
 /**
  * @file subsystems/imu/imu_altimu10.h
  *
- * Driver for the Plolu Altimu10 IMU.
+ * Driver for the Pololu Altimu10 IMU.
  *
  * IMU with LSM6DS33, LIS3MDL and LPS25H via I2C.
  */
 
 #include "subsystems/imu.h"
-#include "subsystems/abi.h" 
+#include "subsystems/abi.h"
 #include "mcu_periph/i2c.h"
 #include "imu_altimu10.h"
 
@@ -103,7 +103,7 @@ void imu_altimu10_periodic(void)
 }
 
 void imu_altimu10_event(void)
-{ 
+{
   uint32_t now_ts = get_sys_time_usec();
 
   lsm6_i2c_event(&imu_altimu10.acc_g_lsm6);
@@ -116,14 +116,6 @@ void imu_altimu10_event(void)
     imu.gyro_unscaled.p = imu_altimu10.acc_g_lsm6.data_g.rates.p;
     imu.gyro_unscaled.q = imu_altimu10.acc_g_lsm6.data_g.rates.q;
     imu.gyro_unscaled.r = imu_altimu10.acc_g_lsm6.data_g.rates.r;
-
-    //imu.gyro_unscaled.p = 0;
-    //imu.gyro_unscaled.q = 0;
-    //imu.gyro_unscaled.r = 0;
-
-    //imu.accel_unscaled.x = 0;
-    //imu.accel_unscaled.y = 0;
-    //imu.accel_unscaled.z = 0;
 
     imu_altimu10.acc_g_lsm6.data_available = false;
     imu_scale_accel(&imu);
@@ -145,7 +137,6 @@ void imu_altimu10_event(void)
 
   lps25h_i2c_event(&imu_altimu10.baro_lps25h);
   if (imu_altimu10.baro_lps25h.data_available) {
-
     imu_altimu10.baro_lps25h.data_available = false;
     AbiSendMsgBARO_ABS(IMU_ALTIMU10_ID, imu_altimu10.baro_lps25h.data);
   }

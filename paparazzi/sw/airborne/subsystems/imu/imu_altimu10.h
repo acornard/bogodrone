@@ -24,7 +24,7 @@
  *
  * Interface and defaults for the Pololu Altimu10 IMU.
  *
- * 9DoM IMU with LSM6DS33, LIS3MDL and LPS25H, all via I2C.
+ * IMU with LSM6DS33, LIS3MDL and LPS25H, all via I2C.
  */
 
 

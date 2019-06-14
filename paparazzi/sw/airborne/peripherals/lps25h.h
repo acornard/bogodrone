@@ -41,7 +41,6 @@ enum Lps25hConfStatus {
 
 struct Lps25hConfig {
     uint8_t ctrl1;
-
 };
 
 static inline void lps25h_set_default_config(struct Lps25hConfig *c)

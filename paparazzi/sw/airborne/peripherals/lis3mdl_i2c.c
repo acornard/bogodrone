@@ -58,7 +58,7 @@ static void lis3mdl_i2c_tx_reg(struct Lis3mdl_I2c *lis, uint8_t reg, uint8_t val
 
 // Configuration function called once before normal use
 static void lis3mdl_i2c_send_config(struct Lis3mdl_I2c *lis)
-{ 
+{
   switch (lis->init_status) {
     case LIS3MDL_CONF_CTRL1:
       lis3mdl_i2c_tx_reg(lis, LIS3MDL_CTRL_REG1, lis->config.ctrl1);
@@ -85,7 +85,7 @@ static void lis3mdl_i2c_send_config(struct Lis3mdl_I2c *lis)
   }
 }
 
-/// Start configuration if not already done
+// Start configuration if not already done
 void lis3mdl_i2c_start_configure(struct Lis3mdl_I2c *lis)
 {
   if (lis->init_status == LIS3MDL_CONF_UNINIT) {
@@ -120,8 +120,7 @@ void lis3mdl_i2c_event(struct Lis3mdl_I2c *lis)
       lis->data.vect.x = Int16FromBuf(lis->i2c_trans.buf, 0);
       lis->data.vect.y = Int16FromBuf(lis->i2c_trans.buf, 2);
       lis->data.vect.z = Int16FromBuf(lis->i2c_trans.buf, 4);
-      //fprintf(stderr, "x=%5d\ty=%5d\tz=%5d\n", lis->data.vect.x,
-      //        lis->data.vect.y, lis->data.vect.z);
+
       lis->data_available = true;
       lis->i2c_trans.status = I2CTransDone;
     }

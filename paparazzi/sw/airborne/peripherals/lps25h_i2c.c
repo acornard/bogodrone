@@ -34,7 +34,6 @@ void lps25h_i2c_init(struct Lps25h_I2c *lps, struct i2c_periph *i2c_p, uint8_t a
 {
   /* set i2c_peripheral */
   lps->i2c_p = i2c_p;
-
   /* set i2c address */
   lps->i2c_trans.slave_addr = addr;
   lps->i2c_trans.status = I2CTransDone;
@@ -58,7 +57,7 @@ static void lps25h_i2c_tx_reg(struct Lps25h_I2c *lps, uint8_t reg, uint8_t val)
 
 // Configuration function called once before normal use
 static void lps25h_i2c_send_config(struct Lps25h_I2c *lps)
-{ 
+{
   switch (lps->init_status) {
     case LPS25H_CONF_CTRL1:
       lps25h_i2c_tx_reg(lps, LPS25H_CTRL_REG1, lps->config.ctrl1);
@@ -73,7 +72,7 @@ static void lps25h_i2c_send_config(struct Lps25h_I2c *lps)
   }
 }
 
-/// Start configuration if not already done
+// Start configuration if not already done
 void lps25h_i2c_start_configure(struct Lps25h_I2c *lps)
 {
   if (lps->init_status == LPS25H_CONF_UNINIT) {
@@ -98,6 +97,7 @@ void lps25h_i2c_read(struct Lps25h_I2c *lps)
 
 #define Int32FromBuf(buf, idx) (int32_t)(int8_t)buf[idx+2] << 16 | (uint16_t)buf[idx+1] << 8 | buf[idx];
 
+// The two following functions can be used to check data
 float lps25h_readPressureMillibars(int32_t press)
 {
   return (float)press / 4096;
@@ -114,9 +114,6 @@ void lps25h_i2c_event(struct Lps25h_I2c *lps)
       lps->i2c_trans.status = I2CTransDone;
     } else if (lps->i2c_trans.status == I2CTransSuccess) {
       lps->data = Int32FromBuf(lps->i2c_trans.buf, 0)
-      //float press = lps25h_readPressureMillibars(lps->data);
-      //float alt  = pressureToAltMeters(press, 1013.25);
-      //fprintf(stderr, "baro: %f \t, alt %f \n", press, alt); 
       lps->data_available = true;
       lps->i2c_trans.status = I2CTransDone;
     }
