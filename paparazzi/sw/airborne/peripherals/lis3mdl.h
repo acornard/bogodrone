@@ -40,7 +40,7 @@
 #endif
 
 #ifndef LIS3MDL_DEFAULT_FS
-#define LIS3MDL_DEFAULT_FS (LIS3MDL_ODR_10HZ << 5)
+#define LIS3MDL_DEFAULT_FS (LIS3MDL_FS_8G << 5)
 #endif
 
 #ifndef LIS3MDL_DEFAULT_OM_Z
